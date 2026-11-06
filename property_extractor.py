@@ -34,6 +34,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 MODEL = os.getenv("CLAUDE_MODEL", "claude-haiku-5-5")
+# Haiku 5.5 thinks by default and thinking eats max_tokens; turn it off there.
+# Other models may reject this setting, so only send it for Haiku.
+EXTRA_ARGS = {"thinking": {"type": "disabled"}} if "haiku" in MODEL else {}
 MAX_TOKENS = 200
 CSV_FILE = Path(__file__).with_name("inquiries.csv")
 FIELDS = ["property_type", "bedrooms", "location", "budget_kes", "rental_or_sale"]
@@ -102,6 +105,7 @@ def call_model(client, inquiry):
             max_tokens=MAX_TOKENS,
             system=SYSTEM_PROMPT,
             messages=[{"role": "user", "content": f"Message: {inquiry}"}],
+            **EXTRA_ARGS,
         )
     except anthropic.APIConnectionError:
         raise ExtractionError("No internet connection. Check your connection and try again.")

@@ -51,8 +51,49 @@ python property_extractor.py --test
 
 ## Example output
 
+A real run of `python property_extractor.py --test`:
+
 ```
-(replace this block with output from a real run of: python property_extractor.py --test)
+Property Inquiry Extractor
+--------------------------
+
+Inquiry: I am looking for a 3-bedroom house in Kileleshwa, budget around 80k per month
+  Property type:  House
+  Bedrooms:       3
+  Location:       Kileleshwa
+  Budget:         KES 80,000 per month
+  Rental or sale: Rental
+
+Inquiry: Do you have any bedsitters near Westlands under 20k?
+  Property type:  Bedsitter
+  Bedrooms:       0 (bedsitter/studio)
+  Location:       Westlands
+  Budget:         KES 20,000 per month
+  Rental or sale: Rental
+
+Inquiry: Hi, I want to buy a 4 bedroom maisonette in Runda or Karen, budget 35m
+  Property type:  Maisonette
+  Bedrooms:       4
+  Location:       Runda / Karen
+  Budget:         KES 35,000,000
+  Rental or sale: Sale
+
+Inquiry: Natafuta nyumba ya kukodisha, two bedroom, Kilimani, 45k-55k
+  Property type:  House
+  Bedrooms:       2
+  Location:       Kilimani
+  Budget:         KES 55,000 per month
+  Rental or sale: Rental
+
+Inquiry: Hello, do you have anything available?
+  Property type:  -- not stated --
+  Bedrooms:       -- not stated --
+  Location:       -- not stated --
+  Budget:         -- not stated --
+  Rental or sale: -- not stated --
+  -> Ask the client for: property type, bedrooms, location, budget, rental or sale
+
+Saved to inquiries.csv
 ```
 
 ## Errors handled
